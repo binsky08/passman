@@ -33,12 +33,15 @@
 	angular.module('passmanApp')
 		.service('FileService', ['$http', 'EncryptService', function ($http, EncryptService) {
 			return {
-				uploadFile: function (file, key) {
+				uploadFile: function (file, key, shared_credential_guid) {
 					var queryUrl = OC.generateUrl('apps/passman/api/v2/file');
 					var _file = angular.copy(file);
 					_file.filename = EncryptService.encryptString(_file.filename, key);
 					var data = EncryptService.encryptString(angular.copy(file.data), key);
 					_file.data = data;
+					if (shared_credential_guid) {
+						_file.shared_credential_guid = shared_credential_guid;
+					}
 					return $http.post(queryUrl, _file).then(function (response) {
 						if (response.data) {
 							return response.data;

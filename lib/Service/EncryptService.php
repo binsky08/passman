@@ -348,8 +348,8 @@ class EncryptService {
 	 * @return File|array
 	 * @throws \Exception
 	 */
-	public function encryptFile($file) {
-		return $this->handleFile($file, EncryptService::OP_ENCRYPT);
+	public function encryptFile($file, $shared_key = null) {
+		return $this->handleFile($file, EncryptService::OP_ENCRYPT, $shared_key);
 	}
 
 	/**
@@ -370,7 +370,7 @@ class EncryptService {
 	 * @return File|array
 	 * @throws \Exception
 	 */
-	private function handleFile($file, $service_function) {
+	private function handleFile($file, $service_function, $shared_key = null) {
 		$userKey = '';
 		$userSuppliedKey = '';
 		if ($file instanceof File) {
@@ -381,6 +381,10 @@ class EncryptService {
 		if (is_array($file)) {
 			$userSuppliedKey = $file['size'];
 			$userKey = md5($file['mimetype']);
+		}
+
+		if ($shared_key !== null) {
+			$userKey = $shared_key;
 		}
 
 		$key = $this->makeKey($userKey, $this->server_key, $userSuppliedKey);

@@ -161,20 +161,23 @@
 					$scope.selected_field_type = 'text';
 					_field.secret = (_field.field_type === 'password');
 					if(_field.field_type === 'file'){
+						var shared_credential_guid;
 						var key = false;
 						var _file = $scope.new_custom_field.value;
 						if (!$scope.storedCredential.hasOwnProperty('acl') && $scope.storedCredential.hasOwnProperty('shared_key')) {
 
 							if ($scope.storedCredential.shared_key) {
 								key = EncryptService.decryptString(angular.copy($scope.storedCredential.shared_key));
+								shared_credential_guid = $scope.storedCredential.guid;
 							}
 						}
 
 						if ($scope.storedCredential.hasOwnProperty('acl')) {
 							key = EncryptService.decryptString(angular.copy($scope.storedCredential.acl.shared_key));
+							shared_credential_guid = $scope.storedCredential.guid;
 						}
 
-						FileService.uploadFile(_file, key).then(function (result) {
+						FileService.uploadFile(_file, key, shared_credential_guid).then(function (result) {
 							delete result.file_data;
 							result.filename = EncryptService.decryptString(result.filename, key);
 							_field.value = result;
@@ -221,6 +224,7 @@
 				};
 
 				$scope.fileLoaded = function (file) {
+					var shared_credential_guid;
 					var key;
 					var _file = {
 						filename: file.name,
@@ -233,15 +237,17 @@
 
 						if ($scope.storedCredential.shared_key) {
 							key = EncryptService.decryptString(angular.copy($scope.storedCredential.shared_key));
+							shared_credential_guid = $scope.storedCredential.guid;
 						}
 					}
 
 					if ($scope.storedCredential.hasOwnProperty('acl')) {
 						key = EncryptService.decryptString(angular.copy($scope.storedCredential.acl.shared_key));
+						shared_credential_guid = $scope.storedCredential.guid;
 					}
 
 
-					FileService.uploadFile(_file, key).then(function (result) {
+					FileService.uploadFile(_file, key, shared_credential_guid).then(function (result) {
 						delete result.file_data;
 						result.filename = EncryptService.decryptString(result.filename, key);
 						$scope.storedCredential.files.push(result);

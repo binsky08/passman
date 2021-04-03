@@ -84,10 +84,10 @@ class FileService {
 	 * @throws MultipleObjectsReturnedException
 	 * @throws Exception
 	 */
-	public function createFile(array $file, string $userId) {
-		$file = $this->encryptService->encryptFile($file);
+	public function createFile(array $file, string $userId, $shared_key = null) {
+		$file = $this->encryptService->encryptFile($file, $shared_key);
 		$file = $this->fileMapper->create($file, $userId);
-		return $this->getFile($file->getId());
+		return $this->getFile($file->getId(), $userId);
 	}
 
 	/**
