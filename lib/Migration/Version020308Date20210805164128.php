@@ -35,6 +35,10 @@ class Version020308Date20210805164128 extends SimpleMigrationStep {
 		if ($schema->hasTable('passman_credentials')) {
 			$table = $schema->getTable('passman_credentials');
 			if (!$table->hasIndex('passman_credential_label_index')) {
+				$table->changeColumn('label', [
+					'type' => 'string',
+					'length' => 300
+				]);
 				$table->addIndex(['label'], 'passman_credential_label_index');
 			}
 		}
