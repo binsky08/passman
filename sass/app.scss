@@ -61,6 +61,24 @@
     margin-right: 0 !important;
   }
 }
+.toastify.dialogs {
+  min-width: 200px;
+  background: none;
+  background-color: rgba(0, 0, 0, 0);
+  background-color: var(--color-main-background);
+  color: var(--color-main-text);
+  box-shadow: 0 0 6px 0 var(--color-box-shadow);
+  padding: 12px;
+  margin-top: 45px;
+  position: fixed;
+  z-index: 10100;
+  border-radius: var(--border-radius);
+  cursor: default;
+}
+.toastify.dialogs .toast-undo-button.toast-close, .toastify.dialogs .toast-close.toast-close {
+  background-image: none !important;
+  cursor: pointer;
+}
 
 #app-content #app-content-wrapper #passman-controls {
   border-bottom: 1px solid #c9c9c9;

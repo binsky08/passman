@@ -115,6 +115,7 @@ style('passman', 'vendor/font-awesome/font-awesome.min');
 style('passman', 'vendor/angular-xeditable/xeditable.min');
 style('passman', 'vendor/ng-tags-input/ng-tags-input.min');
 style('passman', 'vendor/angularjs-datetime-picker/angularjs-datetime-picker');
+style('passman', 'vendor/toastify-js/toastify.min');
 style('passman', 'app');
 /*build-css-end*/
 ?>
