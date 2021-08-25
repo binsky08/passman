@@ -40,7 +40,7 @@
 						$location.path('/');
 						return;
 					}
-				} else {
+				} else if ($scope.active_vault.vault_settings === undefined && $scope.active_vault.private_sharing_key === undefined) {
 					if (SettingsService.getSetting('defaultVault') && SettingsService.getSetting('defaultVaultPass')) {
 						var _vault = angular.copy(SettingsService.getSetting('defaultVault'));
 						_vault.vaultKey = SettingsService.getSetting('defaultVaultPass');
@@ -52,7 +52,8 @@
 				VaultService.getVault($scope.active_vault).then(function (vault) {
 					vault.vaultKey = VaultService.getActiveVault().vaultKey;
 					delete vault.credentials;
-					VaultService.setActiveVault(vault);
+					//VaultService.setActiveVault(vault);
+					//$scope.active_vault = vault;
 					$scope.pwSettings = VaultService.getVaultSetting('pwSettings',
 						{
 							'length': 12,
@@ -379,6 +380,7 @@
                 };
 
                 $scope.updateExistingListWithCredential = function (credential) {
+                	console.log($scope.active_vault);
                     try {
                         if (!credential.shared_key) {
                             credential = CredentialService.decryptCredential(credential);
@@ -409,6 +411,7 @@
                 };
 
 				$scope.cancel = function () {
+					console.log($scope.active_vault);
 					$location.path('/vault/' + $routeParams.vault_id);
 				};
 			}]);

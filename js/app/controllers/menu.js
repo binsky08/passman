@@ -57,6 +57,10 @@
 					$scope.active_vault = vault;
 				});
 
+				$scope.reloadActiveVault = function () {
+					$scope.active_vault = VaultService.getActiveVault();
+				};
+
 				$scope.filtered_tags = [];
 				$rootScope.$on('limit_tags_in_list', function (evt, tags) {
 					$scope.filtered_tags = [];
@@ -146,6 +150,7 @@
                 $scope.collapsedDefaultValue=true;
                 $scope.tagCollapsibleOpen=VaultService.getVaultSetting("vaultTagCollapsedState",$scope.collapsedDefaultValue);
                 $scope.tagCollapsibleClicked = function () {
+                	console.log($scope.active_vault);
                 	if (VaultService.getVaultSetting("vaultTagCollapsedState",$scope.collapsedDefaultValue) === true) {
                         VaultService.setVaultSetting("vaultTagCollapsedState",false);
                     } else {
