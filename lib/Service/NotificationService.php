@@ -34,9 +34,9 @@ class NotificationService {
     public const APP_URL_PREFIX = 'index.php/apps/' . Application::APP_ID;
 
 	public function __construct(
-		private IManager $manager,
-		private IURLGenerator $urlGenerator,
-		private IDBConnection $db,
+		private readonly IManager $manager,
+		private readonly IURLGenerator $urlGenerator,
+		private readonly IDBConnection $db,
 	) {
 	}
 
