@@ -30,8 +30,8 @@ use OCA\PassmanNext\Db\CredentialMapper;
 use OCA\PassmanNext\Db\SharingACL;
 use OCA\PassmanNext\Db\SharingACLMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
+use OCP\DB\Exception;
 use OCP\IConfig;
 use OCP\IURLGenerator;
 
@@ -41,15 +41,15 @@ class CredentialService {
 	private $server_key;
 
 	public function __construct(
-		private CredentialMapper          $credentialMapper,
-		private SharingACLMapper          $sharingACL,
-		private ActivityService           $activityService,
-		private ShareService              $shareService,
-		private EncryptService            $encryptService,
-		private CredentialRevisionService $credentialRevisionService,
-		private IURLGenerator             $urlGenerator,
-		private VaultService              $vaultService,
-		private NotificationService       $notificationService,
+		private readonly CredentialMapper          $credentialMapper,
+		private readonly SharingACLMapper          $sharingACL,
+		private readonly ActivityService           $activityService,
+		private readonly ShareService              $shareService,
+		private readonly EncryptService            $encryptService,
+		private readonly CredentialRevisionService $credentialRevisionService,
+		private readonly IURLGenerator             $urlGenerator,
+		private readonly VaultService              $vaultService,
+		private readonly NotificationService       $notificationService,
 		IConfig                           $config,
 	) {
 		$this->server_key = $config->getSystemValue('passwordsalt', '');
@@ -62,7 +62,7 @@ class CredentialService {
 	 * @return Credential
 	 * @throws \Exception
 	 */
-	public function createCredential(array $credential) {
+	public function createCredential(array $credential): Credential {
 		$credential = $this->encryptService->encryptCredential($credential);
 		return $this->credentialMapper->create($credential);
 	}
@@ -71,25 +71,26 @@ class CredentialService {
 	 * Update credential
 	 *
 	 * @param array $credential
-	 * @param false $useRawUser
-	 * @return Credential|Entity
+	 * @param bool $useRawUser
+	 * @return Credential
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function updateCredential(array $credential, $useRawUser = false) {
-		$credential = $this->encryptService->encryptCredential($credential);
-		return $this->credentialMapper->updateCredential($credential, $useRawUser);
+	public function updateCredential(array $credential, bool $useRawUser = false): Credential {
+		$encryptedCredentialData = $this->encryptService->encryptCredential($credential);
+		return $this->credentialMapper->updateCredential((array) $encryptedCredentialData, $useRawUser);
 	}
 
 	/**
-	 * Update credential
+	 * Update credential based on its model/entity.
+	 * Usually only for internal processing.
 	 *
 	 * @param Credential $credential
-	 * @return Credential|Entity
+	 * @return Credential
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function upd(Credential $credential) {
+	public function updateCredentialEntity(Credential $credential): Credential {
 		$credential = $this->encryptService->encryptCredential($credential);
 		return $this->credentialMapper->updateCredential($credential->jsonSerialize(), false);
 	}
@@ -98,19 +99,21 @@ class CredentialService {
 	 * Delete credential
 	 *
 	 * @param Credential $credential
-	 * @return Entity
+	 * @return Credential
 	 */
-	public function deleteCredential(Credential $credential) {
+	public function deleteCredential(Credential $credential): Credential {
 		$this->shareService->unshareCredential($credential->getGuid());
 		return $this->credentialMapper->deleteCredential($credential);
 	}
 
 	/**
 	 * Delete leftovers from a credential
+	 *
 	 * @param Credential $credential
+	 * @param string $userId
 	 * @throws \Exception
 	 */
-	public function deleteCredentialParts(Credential $credential, $userId) {
+	public function deleteCredentialParts(Credential $credential, string $userId): void {
 		$this->activityService->add(
 			'item_destroyed_self', [$credential->getLabel()],
 			'', [],
@@ -130,10 +133,10 @@ class CredentialService {
 	 *
 	 * @param int $vault_id
 	 * @param string $user_id
-	 * @return Entity[]
+	 * @return Credential[]
 	 * @throws \Exception
 	 */
-	public function getCredentialsByVaultId(int $vault_id, string $user_id) {
+	public function getCredentialsByVaultId(int $vault_id, string $user_id): array {
 		$credentials = $this->credentialMapper->getCredentialsByVaultId($vault_id, $user_id);
 		foreach ($credentials as $index => $credential) {
 			$credentials[$index] = $this->encryptService->decryptCredential($credential);
@@ -146,24 +149,22 @@ class CredentialService {
 	 *
 	 * @param int $vault_id
 	 * @param string $user_id
-	 * @return mixed
+	 * @return Credential
+	 * @throws Exception
 	 */
-	public function getRandomCredentialByVaultId(int $vault_id, string $user_id) {
-		$credentials = $this->credentialMapper->getRandomCredentialByVaultId($vault_id, $user_id);
-		foreach ($credentials as $index => $credential) {
-			$credentials[$index] = $this->encryptService->decryptCredential($credential);
-		}
-		return array_pop($credentials);
+	public function getRandomCredentialByVaultId(int $vault_id, string $user_id): Credential {
+		$credential = $this->credentialMapper->getRandomCredentialByVaultId($vault_id, $user_id);
+		return $this->encryptService->decryptCredential($credential);
 	}
 
 	/**
 	 * Get expired credentials.
 	 *
 	 * @param int $timestamp
-	 * @return Entity[]
+	 * @return Credential[]
 	 * @throws \Exception
 	 */
-	public function getExpiredCredentials(int $timestamp) {
+	public function getExpiredCredentials(int $timestamp): array {
 		$credentials = $this->credentialMapper->getExpiredCredentials($timestamp);
 		foreach ($credentials as $index => $credential) {
 			$credentials[$index] = $this->encryptService->decryptCredential($credential);
@@ -175,12 +176,12 @@ class CredentialService {
 	 * Get a single credential.
 	 *
 	 * @param int $credential_id
-	 * @param string $user_id
-	 * @return array|Credential
+	 * @param string|null $user_id
+	 * @return Credential
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function getCredentialById(int $credential_id, ?string $user_id) {
+	public function getCredentialById(int $credential_id, ?string $user_id): Credential {
 		$credential = $this->credentialMapper->getCredentialById($credential_id);
 		if ($credential->getUserId() === $user_id) {
 			return $this->encryptService->decryptCredential($credential);
@@ -210,13 +211,13 @@ class CredentialService {
 	 * Get credential label by credential id.
 	 *
 	 * @param int $credential_id
-	 * @return array|Credential
+	 * @return Credential partial Credential, containing only 'id' and 'label'
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function getCredentialLabelById(int $credential_id) {
-		$credential = $this->credentialMapper->getCredentialLabelById($credential_id);
-		return $this->encryptService->decryptCredential($credential);
+	public function getCredentialLabelById(int $credential_id): Credential {
+		$partialCredential = $this->credentialMapper->getCredentialLabelById($credential_id);
+		return $this->encryptService->decryptCredential($partialCredential);
 	}
 
 	/**
@@ -224,21 +225,21 @@ class CredentialService {
 	 *
 	 * @param string $credential_guid
 	 * @param string|null $user_id
-	 * @return array|Credential
+	 * @return Credential
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function getCredentialByGUID(string $credential_guid, string $user_id = null) {
+	public function getCredentialByGUID(string $credential_guid, ?string $user_id = null): Credential {
 		$credential = $this->credentialMapper->getCredentialByGUID($credential_guid, $user_id);
 		return $this->encryptService->decryptCredential($credential);
 	}
 
 	public function getDirectEditLink(Credential $credential): string {
-		$vaults = $this->vaultService->getById($credential->getVaultId(), $credential->getUserId());
+		$vault = $this->vaultService->getById($credential->getVaultId(), $credential->getUserId());
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->linkTo(
 				'',
-				'index.php/apps/' . Application::APP_ID . '/#/vault/' . $vaults[0]->getGuid() . '/edit/' . $credential->getGuid()
+				'index.php/apps/' . Application::APP_ID . '/#/vault/' . $vault->getGuid() . '/edit/' . $credential->getGuid()
 			)
 		);
 	}

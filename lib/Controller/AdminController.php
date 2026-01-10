@@ -22,25 +22,21 @@ use OCA\PassmanNext\Service\VaultService;
 use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
-use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IUserManager;
 
 
 class AdminController extends ApiController {
-	private $userId;
-
 	public function __construct(
 		$AppName,
 		IRequest $request,
-		$UserId,
-		private VaultService $vaultService,
-		private CredentialService $credentialService,
-		private FileService $fileService,
-		private CredentialRevisionService $revisionService,
-		private DeleteVaultRequestService $deleteVaultRequestService,
-		private IConfig $config,
-		private IUserManager $userManager,
+		private $userId,
+		private readonly VaultService $vaultService,
+		private readonly CredentialService $credentialService,
+		private readonly FileService $fileService,
+		private readonly CredentialRevisionService $revisionService,
+		private readonly DeleteVaultRequestService $deleteVaultRequestService,
+		private readonly IUserManager $userManager,
 	) {
 		parent::__construct(
 			$AppName,
@@ -48,7 +44,6 @@ class AdminController extends ApiController {
 			'GET, POST, DELETE, PUT, PATCH, OPTIONS',
 			'Authorization, Content-Type, Accept',
 			86400);
-		$this->userId = $UserId;
 
 	}
 
@@ -121,7 +116,7 @@ class AdminController extends ApiController {
 		$req = $this->deleteVaultRequestService->getDeleteRequestForVault($vault_guid);
 		try{
 			$vault = $this->vaultService->getByGuid($vault_guid, $requested_by);
-		} catch (\Exception $e){
+		} catch (\Exception){
 			//Ignore
 		}
 
@@ -175,7 +170,7 @@ class AdminController extends ApiController {
 		$result = false;
 		try {
 			$delete_request = $this->deleteVaultRequestService->getDeleteRequestForVault($vault_guid);
-		} catch (\Exception $exception){
+		} catch (\Exception){
 			// Ignore it
 		}
 
