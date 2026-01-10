@@ -24,6 +24,7 @@
 namespace OCA\PassmanNext\Service;
 
 use OCA\PassmanNext\Activity;
+use OCA\PassmanNext\AppInfo\Application;
 use OCA\PassmanNext\Db\Credential;
 use OCA\PassmanNext\Db\CredentialMapper;
 use OCA\PassmanNext\Db\SharingACL;
@@ -237,7 +238,7 @@ class CredentialService {
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->linkTo(
 				'',
-				'index.php/apps/passman/#/vault/' . $vaults[0]->getGuid() . '/edit/' . $credential->getGuid()
+				'index.php/apps/' . Application::APP_ID . '/#/vault/' . $vaults[0]->getGuid() . '/edit/' . $credential->getGuid()
 			)
 		);
 	}
