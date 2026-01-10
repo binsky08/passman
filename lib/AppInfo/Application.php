@@ -35,7 +35,6 @@ use OCA\PassmanNext\Service\CredentialService;
 use OCA\PassmanNext\Service\CronService;
 use OCA\PassmanNext\Service\FileService;
 use OCA\PassmanNext\Service\NotificationService;
-use OCA\PassmanNext\Service\SettingsService;
 use OCA\PassmanNext\Service\ShareService;
 use OCA\PassmanNext\Service\VaultService;
 use OCA\PassmanNext\Utility\Utils;
@@ -45,8 +44,6 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\IDBConnection;
-use OCP\IGroupManager;
 use OCP\IUserManager;
 use OCP\IUserSession;
 use OCP\Notification\IManager;
@@ -94,8 +91,6 @@ class Application extends App implements IBootstrap {
 		$context->registerService('ShareController', function (ContainerInterface $c) {
 			/** @var IUserManager $userManager */
 			$userManager = $c->get(IUserManager::class);
-			/** @var IGroupManager $groupManager */
-			$groupManager = $c->get(IGroupManager::class);
 			/** @var IUserSession $userSession */
 			$userSession = $c->get(IUserSession::class);
 
@@ -103,7 +98,6 @@ class Application extends App implements IBootstrap {
 				$c->get('AppName'),
 				$c->get('Request'),
 				$userSession->getUser(),
-				$groupManager,
 				$userManager,
 				$c->get(ActivityService::class),
 				$c->get(VaultService::class),
@@ -111,7 +105,6 @@ class Application extends App implements IBootstrap {
 				$c->get(CredentialService::class),
 				$c->get(NotificationService::class),
 				$c->get(FileService::class),
-				$c->get(SettingsService::class),
 				$c->get(IManager::class)
 			);
 		});
@@ -122,8 +115,7 @@ class Application extends App implements IBootstrap {
 				$c->get(LoggerInterface::class),
 				$c->get(Utils::class),
 				$c->get(NotificationService::class),
-				$c->get(ActivityService::class),
-				$c->get(IDBConnection::class)
+				$c->get(ActivityService::class)
 			));
 
 		$context->registerService('Logger', fn(ContainerInterface $c) => $c->get(ServerContainer::class)->getLogger());
