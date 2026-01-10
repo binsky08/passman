@@ -40,6 +40,7 @@ use OCA\PassmanNext\Service\ShareService;
 use OCA\PassmanNext\Service\VaultService;
 use OCA\PassmanNext\Utility\Utils;
 use OCA\UserStatus\Listener\UserDeletedListener;
+use OCP\App\IAppManager;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -56,12 +57,26 @@ use Psr\Log\LoggerInterface;
 
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'passman-next';
+	public const CONFLICTING_APP_ID = 'passman';
 
+	/**
+	 * @throws \Exception
+	 */
 	public function __construct() {
 		parent::__construct(self::APP_ID);
 	}
 
 	public function register(IRegistrationContext $context): void {
+		$container = $this->getContainer();
+		/** @var IAppManager $appManager */
+		$appManager = $container->get(IAppManager::class);
+
+		if ($appManager->isInstalled(self::CONFLICTING_APP_ID)) {
+			throw new \Exception(
+				'Passman Next won\'t be registered while Passman is installed.'
+			);
+		}
+
 		$context->registerEventListener(
 			BeforeUserDeletedEvent::class,
 			UserDeletedListener::class
