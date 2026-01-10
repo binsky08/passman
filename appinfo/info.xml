@@ -49,7 +49,7 @@ For a demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
     <background-jobs>
         <job>OCA\PassmanNext\BackgroundJob\ExpireCredentials</job>
     </background-jobs>
-    
+
     <repair-steps>
         <post-migration>
             <step>OCA\PassmanNext\Migration\ServerSideEncryption</step>
@@ -66,5 +66,6 @@ For a demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
 
     <settings>
         <admin>OCA\PassmanNext\Settings\Admin</admin>
+        <admin-section>OCA\PassmanNext\Settings\AdminSection</admin-section>
     </settings>
 </info>
