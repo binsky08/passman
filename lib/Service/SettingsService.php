@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
 use OCP\IConfig;
 

@@ -9,17 +9,17 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Db\Credential;
-use OCA\Passman\Db\CredentialRevision;
-use OCA\Passman\Db\DeleteVaultRequest;
-use OCA\Passman\Service\CredentialRevisionService;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\DeleteVaultRequestService;
-use OCA\Passman\Service\FileService;
-use OCA\Passman\Service\VaultService;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Db\Credential;
+use OCA\PassmanNext\Db\CredentialRevision;
+use OCA\PassmanNext\Db\DeleteVaultRequest;
+use OCA\PassmanNext\Service\CredentialRevisionService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\DeleteVaultRequestService;
+use OCA\PassmanNext\Service\FileService;
+use OCA\PassmanNext\Service\VaultService;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\IConfig;

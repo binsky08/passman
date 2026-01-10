@@ -21,11 +21,11 @@
  *
  */
 
-use \OCA\Passman\Db\ShareRequest;
-use \OCA\Passman\Utility\PermissionEntity;
+use \OCA\PassmanNext\Db\ShareRequest;
+use \OCA\PassmanNext\Utility\PermissionEntity;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\ShareRequest
+ * @coversDefaultClass \OCA\PassmanNext\Db\ShareRequest
  */
 class ShareRequestTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_DATA = [
@@ -85,7 +85,7 @@ class ShareRequestTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @coversNothing
-	 * @uses \OCA\Passman\Utility\PermissionEntity
+	 * @uses \OCA\PassmanNext\Utility\PermissionEntity
 	 */
 	public function testPermissionSystemIsWorking(){
 		$this->assertTrue($this->request->hasPermission(ShareRequest::FILES));

@@ -21,11 +21,11 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
 use Exception;
-use OCA\Passman\Db\File;
-use OCA\Passman\Db\FileMapper;
+use OCA\PassmanNext\Db\File;
+use OCA\PassmanNext\Db\FileMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

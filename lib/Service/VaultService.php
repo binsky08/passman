@@ -21,10 +21,10 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
-use OCA\Passman\Db\Vault;
-use OCA\Passman\Db\VaultMapper;
+use OCA\PassmanNext\Db\Vault;
+use OCA\PassmanNext\Db\VaultMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

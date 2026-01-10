@@ -21,9 +21,9 @@
  *
  */
 
-namespace OCA\Passman\Db;
+namespace OCA\PassmanNext\Db;
 
-use OCA\Passman\Utility\PermissionEntity;
+use OCA\PassmanNext\Utility\PermissionEntity;
 use OCP\AppFramework\Db\Entity;
 
 /**

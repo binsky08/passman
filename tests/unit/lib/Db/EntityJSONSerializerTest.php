@@ -21,10 +21,10 @@
  *
  */
 
-use \OCA\Passman\Db\EntityJSONSerializer;
+use \OCA\PassmanNext\Db\EntityJSONSerializer;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\EntityJSONSerializer
+ * @coversDefaultClass \OCA\PassmanNext\Db\EntityJSONSerializer
  */
 class EntityJSONSerializerTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_FIELDS = [

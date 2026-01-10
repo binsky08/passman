@@ -21,9 +21,9 @@
  *
  */
 
-namespace OCA\Passman\BackgroundJob;
+namespace OCA\PassmanNext\BackgroundJob;
 
-use OCA\Passman\Service\CronService;
+use OCA\PassmanNext\Service\CronService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\TimedJob;
 use OCP\IConfig;
@@ -31,7 +31,7 @@ use OCP\IConfig;
 /**
  * Class ExpireCredentials
  *
- * @package OCA\Passman\BackgroundJob
+ * @package OCA\PassmanNext\BackgroundJob
  */
 class ExpireCredentials extends TimedJob {
 

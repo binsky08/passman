@@ -21,12 +21,12 @@
  *
  */
 
-use OCA\Passman\Db\ShareRequestMapper;
-use OCA\Passman\Db\ShareRequest;
+use OCA\PassmanNext\Db\ShareRequestMapper;
+use OCA\PassmanNext\Db\ShareRequest;
 
 
 /**
- * @coversDefaultClass OCA\Passman\Db\ShareRequestMapper
+ * @coversDefaultClass OCA\PassmanNext\Db\ShareRequestMapper
  */
 class ShareRequestMapperTest extends DatabaseHelperTest {
 	CONST TABLES = [
@@ -74,7 +74,7 @@ class ShareRequestMapperTest extends DatabaseHelperTest {
 		);
 
 		$this->assertInstanceOf(ShareRequest::class, $data);
-		$this->assertInstanceOf(\OCA\Passman\Utility\PermissionEntity::class, $data);
+		$this->assertInstanceOf(\OCA\PassmanNext\Utility\PermissionEntity::class, $data);
 		$this->assertSame($expected->getItemGuid(), $data->getItemGuid());
 		$this->assertSame($expected->getTargetVaultGuid(), $data->getTargetVaultGuid());
 	}

@@ -21,24 +21,24 @@
  *
  */
 
-namespace OCA\Passman\AppInfo;
+namespace OCA\PassmanNext\AppInfo;
 
 use OC\Files\View;
 use OC\ServerContainer;
-use OCA\Passman\Controller\ShareController;
-use OCA\Passman\Middleware\APIMiddleware;
-use OCA\Passman\Middleware\ShareMiddleware;
-use OCA\Passman\Notifier;
-use OCA\Passman\Search\Provider;
-use OCA\Passman\Service\ActivityService;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\CronService;
-use OCA\Passman\Service\FileService;
-use OCA\Passman\Service\NotificationService;
-use OCA\Passman\Service\SettingsService;
-use OCA\Passman\Service\ShareService;
-use OCA\Passman\Service\VaultService;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Controller\ShareController;
+use OCA\PassmanNext\Middleware\APIMiddleware;
+use OCA\PassmanNext\Middleware\ShareMiddleware;
+use OCA\PassmanNext\Notifier;
+use OCA\PassmanNext\Search\Provider;
+use OCA\PassmanNext\Service\ActivityService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\CronService;
+use OCA\PassmanNext\Service\FileService;
+use OCA\PassmanNext\Service\NotificationService;
+use OCA\PassmanNext\Service\SettingsService;
+use OCA\PassmanNext\Service\ShareService;
+use OCA\PassmanNext\Service\VaultService;
+use OCA\PassmanNext\Utility\Utils;
 use OCA\UserStatus\Listener\UserDeletedListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
@@ -55,7 +55,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
 class Application extends App implements IBootstrap {
-	public const APP_ID = 'passman';
+	public const APP_ID = 'passman-next';
 
 	public function __construct() {
 		parent::__construct(self::APP_ID);

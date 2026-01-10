@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>passman</id>
-    <name>Passman</name>
-    <summary>Passman is a full featured password manager.</summary>
-    <description><![CDATA[Passman is a full featured password manager.
+    <id>passman-next</id>
+    <name>Passman Next</name>
+    <summary>Passman Next is a full-featured password manager, based on Passman.</summary>
+    <description><![CDATA[Passman Next is a full-featured password manager, based on Passman.
 Features:
 - Vaults
 - Vault key is never sent to the server
@@ -17,21 +17,22 @@ Features:
 - Password analyzer
 - Share passwords internally and via link in a secure manner.
 - Import from various password managers (KeePass, LastPass, DashLane, ZOHO, Clipperz.is )
-For an demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
+For a demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
 ]]></description>
-    <version>2.4.12</version>
+    <version>3.0.0</version>
     <licence>agpl</licence>
+    <author homepage="https://github.com/binsky08">binsky</author>
     <author homepage="https://github.com/brantje">Sander Brand</author>
     <author homepage="https://github.com/animalillo">Marcos Zuriaga</author>
-    <namespace>Passman</namespace>
+    <namespace>PassmanNext</namespace>
     <documentation>
-        <admin>https://github.com/nextcloud/passman#readme</admin>
+        <admin>https://github.com/binsky08/passman#readme</admin>
         <developer>https://github.com/nextcloud/passman/wiki</developer>
     </documentation>
     <category>tools</category>
     <website>https://demo.passman.cc</website>
-    <bugs>https://github.com/nextcloud/passman/issues</bugs>
-    <repository type="git">https://github.com/nextcloud/passman.git</repository>
+    <bugs>https://github.com/binsky08/passman/issues</bugs>
+    <repository type="git">https://github.com/binsky08/passman.git</repository>
     <screenshot small-thumbnail="https://img.passman.cc/thumbs/overview.png">https://img.passman.cc/overview.png</screenshot>
     <screenshot small-thumbnail="https://img.passman.cc/thumbs/edit_credential.png">https://img.passman.cc/edit_credential.png</screenshot>
     <screenshot small-thumbnail="https://img.passman.cc/thumbs/share_credential.png">https://img.passman.cc/share_credential.png</screenshot>
@@ -46,12 +47,12 @@ For an demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
     </dependencies>
 
     <background-jobs>
-        <job>OCA\Passman\BackgroundJob\ExpireCredentials</job>
+        <job>OCA\PassmanNext\BackgroundJob\ExpireCredentials</job>
     </background-jobs>
     
     <repair-steps>
         <post-migration>
-            <step>OCA\Passman\Migration\ServerSideEncryption</step>
+            <step>OCA\PassmanNext\Migration\ServerSideEncryption</step>
         </post-migration>
     </repair-steps>
 
@@ -64,6 +65,6 @@ For an demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
     </navigations>
 
     <settings>
-        <admin>OCA\Passman\Settings\Admin</admin>
+        <admin>OCA\PassmanNext\Settings\Admin</admin>
     </settings>
 </info>

@@ -21,7 +21,7 @@
  *
  */
 
-use \OCA\Passman\AppInfo\Application;
+use \OCA\PassmanNext\AppInfo\Application;
 
 abstract class DatabaseHelperTest extends PHPUnit_Extensions_Database_TestCase {
 	CONST DUMPS_DIR = __DIR__ . '/dumps/';

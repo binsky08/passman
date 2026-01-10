@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Passman\Middleware;
+namespace OCA\PassmanNext\Middleware;
 
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;

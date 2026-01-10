@@ -9,17 +9,17 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Activity;
-use OCA\Passman\Db\Credential;
-use OCA\Passman\Db\SharingACL;
-use OCA\Passman\Service\ActivityService;
-use OCA\Passman\Service\CredentialRevisionService;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\SettingsService;
-use OCA\Passman\Service\ShareService;
-use OCA\Passman\Utility\NotFoundJSONResponse;
+use OCA\PassmanNext\Activity;
+use OCA\PassmanNext\Db\Credential;
+use OCA\PassmanNext\Db\SharingACL;
+use OCA\PassmanNext\Service\ActivityService;
+use OCA\PassmanNext\Service\CredentialRevisionService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\SettingsService;
+use OCA\PassmanNext\Service\ShareService;
+use OCA\PassmanNext\Utility\NotFoundJSONResponse;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;

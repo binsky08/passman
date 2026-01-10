@@ -21,14 +21,14 @@
  *
  */
 
-namespace OCA\Passman\Migration;
+namespace OCA\PassmanNext\Migration;
 
-use OCA\Passman\Db\CredentialRevision;
-use OCA\Passman\Db\File;
-use OCA\Passman\Service\CredentialRevisionService;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\EncryptService;
-use OCA\Passman\Service\FileService;
+use OCA\PassmanNext\Db\CredentialRevision;
+use OCA\PassmanNext\Db\File;
+use OCA\PassmanNext\Service\CredentialRevisionService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\EncryptService;
+use OCA\PassmanNext\Service\FileService;
 use OCP\DB\Exception;
 use OCP\IConfig;
 use OCP\IDBConnection;

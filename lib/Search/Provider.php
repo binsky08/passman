@@ -21,14 +21,14 @@
  *
  */
 
-namespace OCA\Passman\Search;
+namespace OCA\PassmanNext\Search;
 
-use OCA\Passman\AppInfo\Application;
-use OCA\Passman\Db\CredentialMapper;
-use OCA\Passman\Db\VaultMapper;
-use OCA\Passman\Service\SettingsService;
-use OCA\Passman\Service\VaultService;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\AppInfo\Application;
+use OCA\PassmanNext\Db\CredentialMapper;
+use OCA\PassmanNext\Db\VaultMapper;
+use OCA\PassmanNext\Service\SettingsService;
+use OCA\PassmanNext\Service\VaultService;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\IDBConnection;

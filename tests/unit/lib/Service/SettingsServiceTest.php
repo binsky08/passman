@@ -21,19 +21,19 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use PHPUnit_Framework_TestCase;
-use OCA\Passman\Service\SettingsService;
+use OCA\PassmanNext\Service\SettingsService;
 
 /**
  * Class SettingsServiceTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass  \OCA\Passman\Service\SettingsService
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass  \OCA\PassmanNext\Service\SettingsService
  */
 class SettingsServiceTest extends PHPUnit_Framework_TestCase {
 

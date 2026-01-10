@@ -9,9 +9,9 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\SettingsService;
+use OCA\PassmanNext\Service\SettingsService;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;

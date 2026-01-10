@@ -21,11 +21,11 @@
  *
  */
 
-use \OCA\Passman\Db\SharingACL;
-use \OCA\Passman\Utility\PermissionEntity;
+use \OCA\PassmanNext\Db\SharingACL;
+use \OCA\PassmanNext\Utility\PermissionEntity;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\SharingACL
+ * @coversDefaultClass \OCA\PassmanNext\Db\SharingACL
  */
 class SharingACLTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_DATA = [
@@ -98,7 +98,7 @@ class SharingACLTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @coversNothing
-	 * @uses \OCA\Passman\Utility\PermissionEntity
+	 * @uses \OCA\PassmanNext\Utility\PermissionEntity
 	 */
 	public function testPermissionSystemIsWorking(){
 		$this->assertTrue($this->acl->hasPermission(PermissionEntity::FILES));

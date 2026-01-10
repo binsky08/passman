@@ -21,10 +21,10 @@
  *
  */
 
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Utility\Utils;
 
 /**
- * @coversDefaultClass OCA\Passman\Utility\Utils
+ * @coversDefaultClass OCA\PassmanNext\Utility\Utils
  */
 class UtilsTest extends PHPUnit_Framework_TestCase {
 	/**

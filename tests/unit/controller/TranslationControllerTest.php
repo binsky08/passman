@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
 use OCP\AppFramework\Http\JSONResponse;
 use PHPUnit_Framework_TestCase;
@@ -30,8 +30,8 @@ use PHPUnit_Framework_TestCase;
 /**
  * Class TranslationControllerTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass  \OCA\Passman\Controller\TranslationController
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass  \OCA\PassmanNext\Controller\TranslationController
  */
 class TranslationControllerTest extends PHPUnit_Framework_TestCase {
 

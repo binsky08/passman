@@ -9,13 +9,13 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
 use Doctrine\DBAL\Exception\DriverException;
 use OC\App\AppManager;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\IconService;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\IconService;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Http\DataDownloadResponse;

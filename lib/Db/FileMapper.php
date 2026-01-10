@@ -22,9 +22,9 @@
  */
 
 
-namespace OCA\Passman\Db;
+namespace OCA\PassmanNext\Db;
 
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

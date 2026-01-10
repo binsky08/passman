@@ -21,15 +21,15 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
 
-use OCA\Passman\Db\CredentialMapper;
-use OCA\Passman\Db\ShareRequest;
-use OCA\Passman\Db\ShareRequestMapper;
-use OCA\Passman\Db\SharingACL;
-use OCA\Passman\Db\SharingACLMapper;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Db\CredentialMapper;
+use OCA\PassmanNext\Db\ShareRequest;
+use OCA\PassmanNext\Db\ShareRequestMapper;
+use OCA\PassmanNext\Db\SharingACL;
+use OCA\PassmanNext\Db\SharingACLMapper;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

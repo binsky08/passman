@@ -21,10 +21,10 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
-use OCA\Passman\Db\CredentialRevision;
-use OCA\Passman\Db\CredentialRevisionMapper;
+use OCA\PassmanNext\Db\CredentialRevision;
+use OCA\PassmanNext\Db\CredentialRevisionMapper;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

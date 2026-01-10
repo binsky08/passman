@@ -21,13 +21,13 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
 
 // Class copied from http://stackoverflow.com/questions/5089841/two-way-encryption-i-need-to-store-passwords-that-can-be-retrieved?answertab=votes#tab-top
 // Upgraded to use openssl
-use OCA\Passman\Db\Credential;
-use OCA\Passman\Db\File;
+use OCA\PassmanNext\Db\Credential;
+use OCA\PassmanNext\Db\File;
 use OCP\AppFramework\Db\Entity;
 use OCP\IConfig;
 

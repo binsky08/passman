@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Utility;
+namespace OCA\PassmanNext\Utility;
 
 
 use OCP\AppFramework\Http;

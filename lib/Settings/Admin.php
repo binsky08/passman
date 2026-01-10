@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Settings;
+namespace OCA\PassmanNext\Settings;
 
 use GuzzleHttp\Client;
 use OCP\App\IAppManager;

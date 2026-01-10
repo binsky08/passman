@@ -21,10 +21,10 @@
  *
  */
 
-use \OCA\Passman\Db\Vault;
+use \OCA\PassmanNext\Db\Vault;
 
 /**
- * @coversDefaultClass  \OCA\Passman\Db\Vault
+ * @coversDefaultClass  \OCA\PassmanNext\Db\Vault
  */
 class VaultTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_DATA = [

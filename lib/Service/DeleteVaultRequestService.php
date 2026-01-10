@@ -21,10 +21,10 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
-use OCA\Passman\Db\DeleteVaultRequest;
-use OCA\Passman\Db\DeleteVaultRequestMapper;
+use OCA\PassmanNext\Db\DeleteVaultRequest;
+use OCA\PassmanNext\Db\DeleteVaultRequestMapper;
 use OCP\AppFramework\Db\Entity;
 
 

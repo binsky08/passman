@@ -21,11 +21,11 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
-use OCA\Passman\Activity;
-use OCA\Passman\Db\Credential;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Activity;
+use OCA\PassmanNext\Db\Credential;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\DB\Exception;
 use Psr\Log\LoggerInterface;
 

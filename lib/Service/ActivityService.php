@@ -21,12 +21,12 @@
  *
  */
 
-namespace OCA\Passman\Service;
+namespace OCA\PassmanNext\Service;
 
 use OCP\IConfig;
 use OCP\AppFramework\Db\DoesNotExistException;
 
-use OCA\Passman\Db\FileMapper;
+use OCA\PassmanNext\Db\FileMapper;
 
 
 class ActivityService {
