@@ -21,20 +21,20 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\DeleteVaultRequestService;
-use OCA\Passman\Service\SettingsService;
-use OCA\Passman\Service\VaultService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\DeleteVaultRequestService;
+use OCA\PassmanNext\Service\SettingsService;
+use OCA\PassmanNext\Service\VaultService;
 use OCP\AppFramework\Http\JSONResponse;
 use PHPUnit_Framework_TestCase;
 
 /**
  * Class VaultControllerTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass \OCA\Passman\Controller\VaultController
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass \OCA\PassmanNext\Controller\VaultController
  */
 class VaultControllerTest extends PHPUnit_Framework_TestCase {
 

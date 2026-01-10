@@ -21,10 +21,10 @@
  *
  */
 
-use \OCA\Passman\Db\File;
+use \OCA\PassmanNext\Db\File;
 
 /**
- * @coversDefaultClass  \OCA\Passman\Db\File
+ * @coversDefaultClass  \OCA\PassmanNext\Db\File
  */
 class FileTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_DATA = [

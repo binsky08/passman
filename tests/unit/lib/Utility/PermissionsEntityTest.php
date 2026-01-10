@@ -21,10 +21,10 @@
  *
  */
 
-use \OCA\Passman\Utility\PermissionEntity;
+use \OCA\PassmanNext\Utility\PermissionEntity;
 
 /**
- * @coversDefaultClass \OCA\Passman\Utility\PermissionEntity
+ * @coversDefaultClass \OCA\PassmanNext\Utility\PermissionEntity
  */
 class PermissionsEntityTest extends PHPUnit_Framework_TestCase {
 	/**

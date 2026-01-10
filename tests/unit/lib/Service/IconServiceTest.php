@@ -21,17 +21,17 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\IconService;
+use OCA\PassmanNext\Service\IconService;
 use PHPUnit_Framework_TestCase;
-use OCA\Passman\Service\SettingsService;
+use OCA\PassmanNext\Service\SettingsService;
 
 /**
  * Class SettingsServiceTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass  \OCA\Passman\Service\EncryptService
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass  \OCA\PassmanNext\Service\EncryptService
  */
 class IconServiceTest extends PHPUnit_Framework_TestCase {
 

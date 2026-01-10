@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Db;
+namespace OCA\PassmanNext\Db;
 use \OCP\AppFramework\Db\Entity;
 
 /**

@@ -21,20 +21,20 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\EncryptService;
+use OCA\PassmanNext\Service\EncryptService;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
 use PHPUnit_Framework_TestCase;
-use OCA\Passman\Service\SettingsService;
+use OCA\PassmanNext\Service\SettingsService;
 
 /**
  * Class SettingsServiceTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass  \OCA\Passman\Service\EncryptService
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass  \OCA\PassmanNext\Service\EncryptService
  */
 class EncryptServiceTest extends PHPUnit_Framework_TestCase {
 

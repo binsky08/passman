@@ -21,12 +21,12 @@
  *
  */
 
-use \OCA\Passman\Db\CredentialMapper;
-use \OCA\Passman\Db\Credential;
-use \OCA\Passman\Utility\Utils;
+use \OCA\PassmanNext\Db\CredentialMapper;
+use \OCA\PassmanNext\Db\Credential;
+use \OCA\PassmanNext\Utility\Utils;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\CredentialMapper
+ * @coversDefaultClass \OCA\PassmanNext\Db\CredentialMapper
  */
 class CredentialMapperTest extends DatabaseHelperTest {
 	CONST TABLES = [

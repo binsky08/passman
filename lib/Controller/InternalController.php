@@ -9,10 +9,10 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\NotificationService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\NotificationService;
 use OCP\App\IAppManager;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Db\DoesNotExistException;

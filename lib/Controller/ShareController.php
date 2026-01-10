@@ -9,20 +9,20 @@
  * @copyright Sander Brand 2016
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Activity;
-use OCA\Passman\Db\File;
-use OCA\Passman\Db\SharingACL;
-use OCA\Passman\Service\ActivityService;
-use OCA\Passman\Service\CredentialService;
-use OCA\Passman\Service\FileService;
-use OCA\Passman\Service\NotificationService;
-use OCA\Passman\Service\SettingsService;
-use OCA\Passman\Service\ShareService;
-use OCA\Passman\Service\VaultService;
-use OCA\Passman\Utility\NotFoundJSONResponse;
-use OCA\Passman\Utility\Utils;
+use OCA\PassmanNext\Activity;
+use OCA\PassmanNext\Db\File;
+use OCA\PassmanNext\Db\SharingACL;
+use OCA\PassmanNext\Service\ActivityService;
+use OCA\PassmanNext\Service\CredentialService;
+use OCA\PassmanNext\Service\FileService;
+use OCA\PassmanNext\Service\NotificationService;
+use OCA\PassmanNext\Service\SettingsService;
+use OCA\PassmanNext\Service\ShareService;
+use OCA\PassmanNext\Service\VaultService;
+use OCA\PassmanNext\Utility\NotFoundJSONResponse;
+use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;

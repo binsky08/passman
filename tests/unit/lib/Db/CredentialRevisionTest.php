@@ -21,10 +21,10 @@
  *
  */
 
-use \OCA\Passman\Db\CredentialRevision;
+use \OCA\PassmanNext\Db\CredentialRevision;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\CredentialRevision
+ * @coversDefaultClass \OCA\PassmanNext\Db\CredentialRevision
  */
 class CredentialRevisionTest extends PHPUnit_Framework_TestCase {
 	CONST TEST_DATA = [

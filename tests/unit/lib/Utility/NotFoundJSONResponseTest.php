@@ -21,11 +21,11 @@
  *
  */
 
-use \OCA\Passman\Utility\NotFoundJSONResponse;
+use \OCA\PassmanNext\Utility\NotFoundJSONResponse;
 use \OCP\AppFramework\Http;
 
 /**
- * @coversDefaultClass \OCA\Passman\Utility\NotFoundJSONResponse
+ * @coversDefaultClass \OCA\PassmanNext\Utility\NotFoundJSONResponse
  */
 class NotFoundJSONResponseTest extends PHPUnit_Framework_TestCase {
 	/**

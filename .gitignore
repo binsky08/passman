@@ -3,6 +3,10 @@ node_modules
 .sass-cache
 npm-debug.log
 
+composer.lock
+package-lock.json
+vendor
+
 # Don't mess with other dev's config
 launch_phpunit.sh
 dist

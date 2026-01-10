@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman;
+namespace OCA\PassmanNext;
 
 use OCP\L10N\IFactory;
 use OCP\Notification\INotification;

@@ -21,12 +21,12 @@
  *
  */
 
-use \OCA\Passman\Db\Credential;
+use \OCA\PassmanNext\Db\Credential;
 use \OCP\AppFramework\Db\Entity;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\Credential
- * @uses \OCA\Passman\Db\EntityJSONSerializer
+ * @coversDefaultClass \OCA\PassmanNext\Db\Credential
+ * @uses \OCA\PassmanNext\Db\EntityJSONSerializer
  * @uses \OCP\AppFramework\Db\Entity
  * @uses \JsonSerializable
  */

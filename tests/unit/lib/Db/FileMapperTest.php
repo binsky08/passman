@@ -21,11 +21,11 @@
  *
  */
 
-use \OCA\Passman\Db\FileMapper;
-use \OCA\Passman\Db\File;
+use \OCA\PassmanNext\Db\FileMapper;
+use \OCA\PassmanNext\Db\File;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\FileMapper
+ * @coversDefaultClass \OCA\PassmanNext\Db\FileMapper
  */
 class FileMapperTest extends DatabaseHelperTest {
 	CONST TABLES = [
@@ -47,7 +47,7 @@ class FileMapperTest extends DatabaseHelperTest {
 	 */
 	public function setUp() {
 		parent::setUp();
-		$this->mapper = new FileMapper($this->db, new \OCA\Passman\Utility\Utils());
+		$this->mapper = new FileMapper($this->db, new \OCA\PassmanNext\Utility\Utils());
 		$this->dataset = $this->getTableDataset(self::TABLES[0]);
 	}
 

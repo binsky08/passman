@@ -1,37 +1,23 @@
-# Passman
-Passman is a full featured password manager.
-
-[![Build Status](https://travis-ci.org/nextcloud/passman.svg?branch=master)](https://travis-ci.org/nextcloud/passman)
-[![Docker Automated buid](https://img.shields.io/docker/build/brantje/passman.svg)](hub.docker.com/r/brantje/passman/)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/749bb288c9fd4592a73056549d44a85e)](https://www.codacy.com/app/brantje/passman?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nextcloud/passman&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/749bb288c9fd4592a73056549d44a85e)](https://www.codacy.com/app/brantje/passman?utm_source=github.com&utm_medium=referral&utm_content=nextcloud/passman&utm_campaign=Badge_Coverage)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nextcloud/passman/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nextcloud/passman/?branch=master)
+# Passman Next
+Passman Next is a full-featured password manager, based on [Passman](https://github.com/nextcloud/passman).
 
 ## Join us!
 Visit the [“Passman General Talk” Telegram Group](https://t.me/passman_general) to participate in all sorts of topical discussions about Passman and its apps!
 
-## Contents
-  * [Screenshots](https://github.com/nextcloud/passman#Screenshots) 
-  * [Features](https://github.com/nextcloud/passman#features) 
-  * [External apps](https://github.com/nextcloud/passman#external-apps)
-  * [Security](https://github.com/nextcloud/passman#security)
-    * [Password generation](https://github.com/nextcloud/passman#password-generation)
-    * [Storing credentials](https://github.com/nextcloud/passman#storing-credentials)
-  * [Support passman](https://github.com/nextcloud/passman#support-passman)
-  * [Development](https://github.com/nextcloud/passman#development)
-  * [API](https://github.com/nextcloud/passman#api)
-  * [Docker](https://github.com/nextcloud/passman#docker)
-  * [Maintainers](https://github.com/nextcloud/passman#main-developers)
-  * [Contributors](https://github.com/nextcloud/passman#contributors)
-
 ## Screenshots
-![Logged in to vault](http://i.imgur.com/ciShQZg.png)   
 
-![Credential selected](http://i.imgur.com/3tENldT.png)   
+<details>
+<summary>Screenshots</summary>
 
-![Edit credential](http://i.imgur.com/Iwm3hUe.png)   
+![Logged in to vault](http://i.imgur.com/ciShQZg.png)
+
+![Credential selected](http://i.imgur.com/3tENldT.png)
+
+![Edit credential](http://i.imgur.com/Iwm3hUe.png)
 
 ![Password tool](http://i.imgur.com/ZYkN70r.png)
+
+</details>
 
 For more screenshots: [Click here](http://imgur.com/a/giKVt)
 
@@ -54,14 +40,12 @@ For more screenshots: [Click here](http://imgur.com/a/giKVt)
   
 Try a Passman demo [here](https://demo.passman.cc).
 
-## Tested on
-- Nextcloud 14
-
-For older Versions see the [Releases Tab](https://github.com/nextcloud/passman/releases)
-
 ## External apps
-  * [Firefox / chrome extension](https://github.com/nextcloud/passman-webextension)
+  * New [Firefox](https://addons.mozilla.org/de/firefox/addon/passman-webextension-v3/) and [Chrome](https://chromewebstore.google.com/detail/passman-webextension-v3/ofngoamnbkaglfcpacagjdlmdhachdlc) browser extension
+    * see [project repo](https://gitlab.com/binsky08/passman-webextension-v3)
   * [Android app](https://github.com/nextcloud/passman-android)
+  * [Passman Svelte](https://binsky08.gitlab.io/passman-svelte), a new standalone Passman web client
+  * Legacy [Passman](https://github.com/nextcloud/passman) Nextcloud app
 
 ## Database Compatibility
 
@@ -69,7 +53,6 @@ For older Versions see the [Releases Tab](https://github.com/nextcloud/passman/r
 | :--- | :---: | :---: | :---: |
 | SQL Lite | • |   |   |
 | MySQL / MariaDB | • |   |   |
-| travis |   | • |   |
 | pgsql | • |   |   |
 
 ## Security
@@ -98,21 +81,18 @@ Passman allows users to share passwords. *(Administrators may disable this featu
 ## API 
 Passman offers a [developer API](https://github.com/nextcloud/passman/wiki/API).
 
-## Support Passman
-Passman is open source but we’ll gladly accept a beer *or pizza!* Please consider donating:
-  * [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6YS8F97PETVU2)
-  * [Patreon](https://www.patreon.com/user?u=4833592)
-  * [Flattr](https://flattr.com/@passman)
-  * bitcoin: 1H2c5tkGX54n48yEtM4Wm4UrAGTW85jQpe
+## Support Passman Next
+Passman Next as well as the companion apps are open source, but we’ll gladly accept a beer *or pizza!* Please consider donating:
+  * [Support me on Ko-fi](https://ko-fi.com/binsky)
 
 ## Code reviews
 If you have any code improvements:
-  * Clone us
+  * Clone the repo
   * Make your edits
   * Add your name to the contributors
-  * Send a [PR](https://github.com/nextcloud/passman/pulls)
+  * Send a [PR](https://github.com/binsky08/passman/pulls)
 
-Or, if you’re feeling lazy, create an issue and we’ll think about it.
+Or, if you’re feeling lazy, create an issue, and we’ll think about it.
 
 ## Docker
 To run Passman with [Docker](https://www.docker.com/), use our test Docker image. Supply your own self-signed SSL certs or use [Let’s Encrypt](https://letsencrypt.org/). Please note: The Docker image is for _testing *only*_ as database user / password are hardcoded.   
@@ -137,13 +117,13 @@ If you want a production-ready container, use the [Nextcloud Docker](https://hub
   * Run unit tests — Install phpunit globally, setup environment variables in the `launch_phpunit.sh` script, and run the script. All arguments passed to `launch_phpunit.sh` are forwarded to phpunit.
 
 ## Main developers
+  * [binsky](https://github.com/binsky08)
   * Brantje
   * Animalillo
 
 ## Contributors
 Add yours when creating a [pull request](https://help.github.com/articles/creating-a-pull-request/)!
   * Newhinton
-  * [binsky](https://github.com/binsky08)
   * [HolgerHees](https://github.com/HolgerHees)
 
 ## FAQ

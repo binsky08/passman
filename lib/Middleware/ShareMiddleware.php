@@ -1,9 +1,9 @@
 <?php
 
-namespace OCA\Passman\Middleware;
+namespace OCA\PassmanNext\Middleware;
 
-use OCA\Passman\Controller\ShareController;
-use OCA\Passman\Service\SettingsService;
+use OCA\PassmanNext\Controller\ShareController;
+use OCA\PassmanNext\Service\SettingsService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Middleware;

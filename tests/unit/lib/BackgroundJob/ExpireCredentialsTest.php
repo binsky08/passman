@@ -21,18 +21,18 @@
  *
  */
 
-namespace OCA\Passman\Tests\BackgroundJob;
+namespace OCA\PassmanNext\Tests\BackgroundJob;
 
 use PHPUnit_Framework_TestCase;
-use OCA\Passman\BackgroundJob\ExpireCredentials;
+use OCA\PassmanNext\BackgroundJob\ExpireCredentials;
 use OCP\IConfig;
 
 /**
  * Class ExpireCredentialsTest
  *
  * @group DB
- * @package OCA\Passman\Tests\BackgroundJob
- * @covers \OCA\Passman\BackgroundJob\ExpireCredentials
+ * @package OCA\PassmanNext\Tests\BackgroundJob
+ * @covers \OCA\PassmanNext\BackgroundJob\ExpireCredentials
  */
 class ExpireCredentialsTest extends PHPUnit_Framework_TestCase {
 	public function testRun() {

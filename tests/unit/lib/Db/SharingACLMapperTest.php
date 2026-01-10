@@ -21,11 +21,11 @@
  *
  */
 
-use \OCA\Passman\Db\SharingACLMapper;
-use \OCA\Passman\Db\SharingACL;
+use \OCA\PassmanNext\Db\SharingACLMapper;
+use \OCA\PassmanNext\Db\SharingACL;
 
 /**
- * @coversDefaultClass \OCA\Passman\Db\SharingACLMapper
+ * @coversDefaultClass \OCA\PassmanNext\Db\SharingACLMapper
  */
 class SharingACLMapperTest extends DatabaseHelperTest {
 	CONST TABLES = [
@@ -60,7 +60,7 @@ class SharingACLMapperTest extends DatabaseHelperTest {
 
 	/**
 	 * @covers ::getItemACL
-	 * @uses \OCA\Passman\Db\SharingACL
+	 * @uses \OCA\PassmanNext\Db\SharingACL
 	 */
 	public function testGetItemACL() {
 		$expected_acl = $this->dataset->getRow(0);
@@ -107,7 +107,7 @@ class SharingACLMapperTest extends DatabaseHelperTest {
 
 		$this->assertEquals($expected_data, $data);
 
-		$data->setExpire(\OCA\Passman\Utility\Utils::getTime());
+		$data->setExpire(\OCA\PassmanNext\Utility\Utils::getTime());
 		$this->mapper->updateCredentialACL($data);
 
 		$updated = $this->mapper->getItemACL(

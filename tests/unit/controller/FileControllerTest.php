@@ -21,17 +21,17 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
-use OCA\Passman\Service\FileService;
+use OCA\PassmanNext\Service\FileService;
 use OCP\AppFramework\Http\JSONResponse;
 use PHPUnit_Framework_TestCase;
 
 /**
  * Class FileControllerTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass \OCA\Passman\Controller\FileController
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass \OCA\PassmanNext\Controller\FileController
  */
 class FileControllerTest extends PHPUnit_Framework_TestCase {
 

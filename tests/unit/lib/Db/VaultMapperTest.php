@@ -21,13 +21,13 @@
  *
  */
 
-use \OCA\Passman\Db\VaultMapper;
-use \OCA\Passman\Utility\Utils;
-use \OCA\Passman\Db\Vault;
+use \OCA\PassmanNext\Db\VaultMapper;
+use \OCA\PassmanNext\Utility\Utils;
+use \OCA\PassmanNext\Db\Vault;
 
 /**
  * Unit tests for VaultMapper
- * @coversDefaultClass \OCA\Passman\Db\VaultMapper
+ * @coversDefaultClass \OCA\PassmanNext\Db\VaultMapper
  */
 class VaultMapperTest extends DatabaseHelperTest {
 	CONST TABLES = [

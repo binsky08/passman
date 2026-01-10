@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Db;
+namespace OCA\PassmanNext\Db;
 trait EntityJSONSerializer {
 	public function serializeFields($properties) {
 		$result = [];

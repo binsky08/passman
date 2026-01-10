@@ -21,7 +21,7 @@
  *
  */
 
-namespace OCA\Passman\Controller;
+namespace OCA\PassmanNext\Controller;
 
 use OCP\AppFramework\Http\TemplateResponse;
 use PHPUnit_Framework_TestCase;
@@ -29,8 +29,8 @@ use PHPUnit_Framework_TestCase;
 /**
  * Class PageControllerTest
  *
- * @package OCA\Passman\Controller
- * @coversDefaultClass  \OCA\Passman\Controller\PageController
+ * @package OCA\PassmanNext\Controller
+ * @coversDefaultClass  \OCA\PassmanNext\Controller\PageController
  */
 class PageControllerTest extends PHPUnit_Framework_TestCase {
 
