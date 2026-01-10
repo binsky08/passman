@@ -14,8 +14,6 @@ namespace OCA\PassmanNext\Controller;
 use OCA\PassmanNext\Db\Credential;
 use OCA\PassmanNext\Service\CredentialService;
 use OCA\PassmanNext\Service\DeleteVaultRequestService;
-use OCA\PassmanNext\Service\FileService;
-use OCA\PassmanNext\Service\SettingsService;
 use OCA\PassmanNext\Service\VaultService;
 use OCA\PassmanNext\Utility\NotFoundJSONResponse;
 use OCP\AppFramework\ApiController;
@@ -32,8 +30,6 @@ class VaultController extends ApiController {
 		private readonly VaultService $vaultService,
 		private readonly CredentialService $credentialService,
 		private readonly DeleteVaultRequestService $deleteVaultRequestService,
-		private readonly SettingsService $settings,
-		private readonly FileService $fileService,
 		private readonly LoggerInterface $logger,
 	) {
 		parent::__construct(

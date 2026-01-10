@@ -22,7 +22,6 @@ use OCA\PassmanNext\Service\VaultService;
 use OCA\PassmanNext\Utility\Utils;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
-use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IUserManager;
 
@@ -37,7 +36,6 @@ class AdminController extends ApiController {
 		private readonly FileService $fileService,
 		private readonly CredentialRevisionService $revisionService,
 		private readonly DeleteVaultRequestService $deleteVaultRequestService,
-		private readonly IConfig $config,
 		private readonly IUserManager $userManager,
 	) {
 		parent::__construct(
