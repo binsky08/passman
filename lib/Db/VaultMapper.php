@@ -34,7 +34,7 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<Vault>
  */
 class VaultMapper extends QBMapper {
-	const TABLE_NAME = 'passman_vaults';
+	const TABLE_NAME = 'passman_next_vaults';
 
 	public function __construct(
 		IDBConnection $db,

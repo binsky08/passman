@@ -35,7 +35,7 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<ShareRequest>
  */
 class ShareRequestMapper extends QBMapper {
-	const TABLE_NAME = 'passman_share_request';
+	const TABLE_NAME = 'passman_next_share_request';
 
 	public function __construct(IDBConnection $db) {
 		parent::__construct($db, self::TABLE_NAME);

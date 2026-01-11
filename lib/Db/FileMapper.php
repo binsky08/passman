@@ -35,7 +35,7 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<File>
  */
 class FileMapper extends QBMapper {
-	const TABLE_NAME = 'passman_files';
+	const TABLE_NAME = 'passman_next_files';
 
 	public function __construct(
 		IDBConnection $db,

@@ -35,7 +35,7 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<Credential>
  */
 class CredentialMapper extends QBMapper {
-	const TABLE_NAME = 'passman_credentials';
+	const TABLE_NAME = 'passman_next_credentials';
 
 	public function __construct(
 		IDBConnection $db,

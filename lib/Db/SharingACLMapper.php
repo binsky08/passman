@@ -34,10 +34,10 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<SharingACL>
  */
 class SharingACLMapper extends QBMapper {
-	const TABLE_NAME = 'passman_sharing_acl';
+	const TABLE_NAME = 'passman_next_sharing_acl';
 
 	public function __construct(IDBConnection $db) {
-		parent::__construct($db, 'passman_sharing_acl');
+		parent::__construct($db, self::TABLE_NAME);
 	}
 
 	/**
