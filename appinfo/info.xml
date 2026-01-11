@@ -50,12 +50,6 @@ For a demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
         <job>OCA\PassmanNext\BackgroundJob\ExpireCredentials</job>
     </background-jobs>
 
-    <repair-steps>
-        <post-migration>
-            <step>OCA\PassmanNext\Migration\ServerSideEncryption</step>
-        </post-migration>
-    </repair-steps>
-
     <navigations>
         <navigation>
             <name>Passwords</name>
@@ -63,6 +57,10 @@ For a demo of this app visit [https://demo.passman.cc](https://demo.passman.cc)
             <order>10</order>
         </navigation>
     </navigations>
+
+    <commands>
+        <command>OCA\PassmanNext\Command\PassmanLegacyMigrateCommand</command>
+    </commands>
 
     <settings>
         <admin>OCA\PassmanNext\Settings\Admin</admin>

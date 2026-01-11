@@ -6,13 +6,25 @@ namespace OCA\PassmanNext\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
+use OCP\IDBConnection;
 use OCP\Migration\IOutput;
 use OCP\Migration\SimpleMigrationStep;
 
 /**
- * Auto-generated migration step: Please modify to your needs!
+ * Initial migration for Passman Next, based on the combination of migrations from the Passman (legacy v2.4.12) app.
  */
-class Version020308Date20210711121919 extends SimpleMigrationStep {
+class VersionNext030000Date20260110234900 extends SimpleMigrationStep
+{
+
+	const TABLE_PREFIX = 'passman_next_';
+
+	/**
+	 * @param IDBConnection $connection
+	 */
+	public function __construct(
+		protected IDBConnection $connection,
+	) {
+	}
 
 	/**
 	 * @param IOutput $output
@@ -22,51 +34,42 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 	public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options): void {
 	}
 
-	/**
-	 * @param IOutput $output
-	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
-	 * @param array $options
-	 * @return null|ISchemaWrapper
-	 */
-	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): ?ISchemaWrapper {
-		/** @var ISchemaWrapper $schema */
-		$schema = $schemaClosure();
-
-		if (!$schema->hasTable('passman_vaults')) {
-			$table = $schema->createTable('passman_vaults');
+	private function vaultsTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'vaults')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'vaults');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 				'default' => '',
 			]);
 			$table->addColumn('user_id', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 				'default' => '',
 			]);
 			$table->addColumn('name', 'string', [
 				'notnull' => true,
-				'length' => 100,
+				'length'  => 100,
 			]);
 			$table->addColumn('vault_settings', 'text', [
 				'notnull' => false,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 8,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('last_access', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 8,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('public_sharing_key', 'text', [
@@ -77,7 +80,7 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			]);
 			$table->addColumn('sharing_keys_generated', 'bigint', [
 				'notnull' => false,
-				'length' => 8,
+				'length'  => 8,
 			]);
 			$table->setPrimaryKey(['id']);
 			$table->addIndex(['last_access'], 'passman_vault_last_access_index');
@@ -85,43 +88,46 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			$table->addIndex(['id'], 'npassman_vault_id_index');
 			$table->addIndex(['user_id'], 'passman_vault_uid_id_index');
 		}
+	}
 
-		if (!$schema->hasTable('passman_credentials')) {
-			$table = $schema->createTable('passman_credentials');
+	private function credentialsTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'credentials')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'credentials');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('guid', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('user_id', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('vault_id', 'bigint', [
 				'notnull' => true,
-				'length' => 8,
+				'length'  => 8,
 			]);
-			$table->addColumn('label', 'text', [
+			$table->addColumn('label', 'string', [
 				'notnull' => true,
+				'length'  => 2048
 			]);
 			$table->addColumn('description', 'text', [
 				'notnull' => false,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 8,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('changed', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 8,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('tags', 'text', [
@@ -140,16 +146,16 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 				'notnull' => false,
 			]);
 			$table->addColumn('renew_interval', 'bigint', [
-				'notnull' => false,
+				'notnull'  => false,
 				'unsigned' => true,
 			]);
 			$table->addColumn('expire_time', 'bigint', [
-				'notnull' => false,
+				'notnull'  => false,
 				'unsigned' => true,
 			]);
 			$table->addColumn('delete_time', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
+				'notnull'  => false,
+				'length'   => 8,
 				'unsigned' => true,
 			]);
 			$table->addColumn('files', 'text', [
@@ -179,26 +185,28 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			$table->addIndex(['vault_id'], 'passman_credential_vault_id_index');
 			$table->addIndex(['user_id'], 'passman_credential_user_id_index');
 		}
+	}
 
-		if (!$schema->hasTable('passman_files')) {
-			$table = $schema->createTable('passman_files');
+	private function filesTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'files')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'files');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('guid', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('user_id', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('mimetype', 'string', [
 				'notnull' => true,
-				'length' => 255,
+				'length'  => 255,
 			]);
 			$table->addColumn('filename', 'text', [
 				'notnull' => true,
@@ -216,31 +224,33 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			$table->addIndex(['id'], 'passman_file_id_index');
 			$table->addIndex(['user_id'], 'passman_file_user_id_index');
 		}
+	}
 
-		if (!$schema->hasTable('passman_revisions')) {
-			$table = $schema->createTable('passman_revisions');
+	private function revisionsTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'revisions')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'revisions');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('credential_id', 'bigint', [
 				'notnull' => true,
-				'length' => 8,
+				'length'  => 8,
 			]);
 			$table->addColumn('user_id', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 8,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('credential_data', 'text', [
@@ -248,65 +258,67 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			]);
 			$table->addColumn('edited_by', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->setPrimaryKey(['id']);
 			$table->addIndex(['id'], 'passman_revision_id_index');
 			$table->addIndex(['user_id'], 'passman_revision_user_id_index');
 			$table->addIndex(['credential_id'], 'passman_revision_credential_id_index');
 		}
+	}
 
-		if (!$schema->hasTable('passman_sharing_acl')) {
-			$table = $schema->createTable('passman_sharing_acl');
+	private function sharingAclTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'sharing_acl')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'sharing_acl');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('item_id', 'bigint', [
 				'notnull' => true,
-				'length' => 8,
+				'length'  => 8,
 			]);
 			$table->addColumn('item_guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('vault_id', 'bigint', [
-				'notnull' => false,
-				'length' => 8,
+				'notnull'  => false,
+				'length'   => 8,
 				'unsigned' => true,
 			]);
 			$table->addColumn('vault_guid', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('user_id', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 64,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 64,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('expire', 'bigint', [
-				'notnull' => false,
-				'length' => 64,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 64,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('expire_views', 'bigint', [
-				'notnull' => false,
-				'length' => 64,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 64,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('permissions', 'smallint', [
-				'notnull' => true,
-				'length' => 3,
-				'default' => 0,
+				'notnull'  => true,
+				'length'   => 3,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('shared_key', 'text', [
@@ -314,86 +326,110 @@ class Version020308Date20210711121919 extends SimpleMigrationStep {
 			]);
 			$table->setPrimaryKey(['id']);
 		}
+	}
 
-		if (!$schema->hasTable('passman_share_request')) {
-			$table = $schema->createTable('passman_share_request');
+	private function shareRequestsTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'share_request')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'share_request');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('item_id', 'bigint', [
 				'notnull' => true,
-				'length' => 8,
+				'length'  => 8,
 			]);
 			$table->addColumn('item_guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('target_user_id', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('from_user_id', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('target_vault_id', 'bigint', [
-				'notnull' => true,
-				'length' => 8,
+				'notnull'  => true,
+				'length'   => 8,
 				'unsigned' => true,
 			]);
 			$table->addColumn('target_vault_guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('shared_key', 'text', [
 				'notnull' => true,
 			]);
 			$table->addColumn('permissions', 'smallint', [
-				'notnull' => true,
-				'length' => 3,
-				'default' => 0,
+				'notnull'  => true,
+				'length'   => 3,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 64,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 64,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->setPrimaryKey(['id']);
 		}
+	}
 
-		if (!$schema->hasTable('passman_delete_vault_request')) {
-			$table = $schema->createTable('passman_delete_vault_request');
+	private function deleteVaultRequestsTable(ISchemaWrapper $schema): void {
+		if (!$schema->hasTable(self::TABLE_PREFIX . 'delete_vault_request')) {
+			$table = $schema->createTable(self::TABLE_PREFIX . 'delete_vault_request');
 			$table->addColumn('id', 'bigint', [
 				'autoincrement' => true,
-				'notnull' => true,
-				'length' => 8,
-				'unsigned' => true,
+				'notnull'       => true,
+				'length'        => 8,
+				'unsigned'      => true,
 			]);
 			$table->addColumn('vault_guid', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('reason', 'string', [
 				'notnull' => true,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('requested_by', 'string', [
 				'notnull' => false,
-				'length' => 64,
+				'length'  => 64,
 			]);
 			$table->addColumn('created', 'bigint', [
-				'notnull' => false,
-				'length' => 64,
-				'default' => 0,
+				'notnull'  => false,
+				'length'   => 64,
+				'default'  => 0,
 				'unsigned' => true,
 			]);
 			$table->setPrimaryKey(['id']);
 		}
+	}
+
+	/**
+	 * @param IOutput $output
+	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
+	 * @param array $options
+	 * @return null|ISchemaWrapper
+	 */
+	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): ?ISchemaWrapper {
+		/** @var ISchemaWrapper $schema */
+		$schema = $schemaClosure();
+
+		$this->vaultsTable($schema);
+		$this->credentialsTable($schema);
+		$this->filesTable($schema);
+		$this->revisionsTable($schema);
+		$this->sharingAclTable($schema);
+		$this->shareRequestsTable($schema);
+		$this->deleteVaultRequestsTable($schema);
+
 		return $schema;
 	}
 

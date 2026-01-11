@@ -34,7 +34,7 @@ use OCP\IDBConnection;
  * @template-extends QBMapper<DeleteVaultRequest>
  */
 class DeleteVaultRequestMapper extends QBMapper {
-	const TABLE_NAME = 'passman_delete_vault_request';
+	const TABLE_NAME = 'passman_next_delete_vault_request';
 
 	public function __construct(IDBConnection $db) {
 		parent::__construct($db, self::TABLE_NAME);
