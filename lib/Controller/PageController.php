@@ -34,7 +34,11 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse($this->appName, 'main');  // templates/main.php
+		return new TemplateResponse(
+			appName: $this->appName,
+			templateName: 'spa',
+			renderAs: TemplateResponse::RENDER_AS_USER
+		);  // templates/main.php
 	}
 
 
