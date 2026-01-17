@@ -83,10 +83,10 @@ class VersionNext030000Date20260110234900 extends SimpleMigrationStep
 				'length'  => 8,
 			]);
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['last_access'], 'passman_vault_last_access_index');
-			$table->addIndex(['guid'], 'passman_vault_guid_index');
-			$table->addIndex(['id'], 'npassman_vault_id_index');
-			$table->addIndex(['user_id'], 'passman_vault_uid_id_index');
+			$table->addIndex(['last_access'], self::TABLE_PREFIX . 'vault_last_access_index');
+			$table->addIndex(['guid'], self::TABLE_PREFIX . 'vault_guid_index');
+			$table->addIndex(['id'], self::TABLE_PREFIX . 'vault_id_index');
+			$table->addIndex(['user_id'], self::TABLE_PREFIX . 'vault_uid_id_index');
 		}
 	}
 
@@ -181,9 +181,9 @@ class VersionNext030000Date20260110234900 extends SimpleMigrationStep
 				'notnull' => false,
 			]);
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['id'], 'passman_credential_id_index');
-			$table->addIndex(['vault_id'], 'passman_credential_vault_id_index');
-			$table->addIndex(['user_id'], 'passman_credential_user_id_index');
+			$table->addIndex(['id'], self::TABLE_PREFIX . 'credential_id_index');
+			$table->addIndex(['vault_id'], self::TABLE_PREFIX . 'credential_vault_id_index');
+			$table->addIndex(['user_id'], self::TABLE_PREFIX . 'credential_user_id_index');
 		}
 	}
 
@@ -221,8 +221,8 @@ class VersionNext030000Date20260110234900 extends SimpleMigrationStep
 				'notnull' => false,
 			]);
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['id'], 'passman_file_id_index');
-			$table->addIndex(['user_id'], 'passman_file_user_id_index');
+			$table->addIndex(['id'], self::TABLE_PREFIX . 'file_id_index');
+			$table->addIndex(['user_id'], self::TABLE_PREFIX . 'file_user_id_index');
 		}
 	}
 
@@ -261,9 +261,9 @@ class VersionNext030000Date20260110234900 extends SimpleMigrationStep
 				'length'  => 64,
 			]);
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['id'], 'passman_revision_id_index');
-			$table->addIndex(['user_id'], 'passman_revision_user_id_index');
-			$table->addIndex(['credential_id'], 'passman_revision_credential_id_index');
+			$table->addIndex(['id'], self::TABLE_PREFIX . 'revision_id_index');
+			$table->addIndex(['user_id'], self::TABLE_PREFIX . 'revision_user_id_index');
+			$table->addIndex(['credential_id'], self::TABLE_PREFIX . 'revision_credential_id_index');
 		}
 	}
 
