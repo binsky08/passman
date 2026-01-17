@@ -126,6 +126,7 @@ class PassmanLegacyMigrateCommand extends AbstractInteractiveCommand
 				$this->db->beginTransaction();
 
 				foreach (self::MIGRATE_TABLE_NAMES as $mainTableName) {
+					$output->writeln(sprintf('Migrate %s table ...', $mainTableName));
 					$this->migrateTableData(
 						self::OLD_TABLE_PREFIX . $mainTableName,
 						self::NEW_TABLE_PREFIX . $mainTableName
@@ -208,13 +209,8 @@ class PassmanLegacyMigrateCommand extends AbstractInteractiveCommand
 			$qb->insert($newTableName);
 
 			foreach ($datum as $key => $value) {
-				if (is_null($value)) {
-					$value = 'NULL';
-				} elseif (!is_numeric($value)) {
-					$value = "'{$value}'";
-				}
-
-				$qb->setValue($key, $value);
+				$qb->setValue($key, $qb->createParameter($key));
+				$qb->setParameter($key, $value);
 			}
 
 			$qb->executeStatement();
