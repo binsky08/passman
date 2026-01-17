@@ -11,6 +11,7 @@
 
 namespace OCA\PassmanNext\Controller;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCP\AppFramework\ApiController;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\IL10N;
@@ -216,7 +217,9 @@ class TranslationController extends ApiController {
 			'warning.leave' => $this->trans->t('Please wait your vault is being updated, do not leave this page.'),
 			'processing' => $this->trans->t('Processing'),
 			'total.progress' => $this->trans->t('Total progress'),
-			'about.passman' => $this->trans->t('About Passman'),
+			'about.app-name' => $this->trans->t('About %s', Application::APP_NAME),
+			'about.hobby' => $this->trans->t('This is a hobby project to counteract the stagnating development of the official %s app.', '{{app_name}}'),
+			'about.fork-info' => $this->trans->t('%s is stable and has been maintained and patched by me for many years. The %s fork is designed to deliver updates faster and to introduce new features more quickly.', ['{{app_name_1}}', '{{app_name_2}}']),
 			'version' => $this->trans->t('Version'),
 			'donate.support' => $this->trans->t('Donate to support development'),
 			'bookmarklet' => $this->trans->t('Bookmarklet'),

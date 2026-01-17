@@ -38,6 +38,15 @@
 				$scope.new_vault_name = '';
 				$scope.showGenericImport = false;
 
+				const appLink = '<a href="https://github.com/binsky08/passman" target="_blank" class="link">Passman Next</a>';
+				$scope.aboutTranslationData = {
+					app_name: appLink,
+					app_name_1: '<a href="https://github.com/nextcloud/passman" target="_blank" class="link">Passman</a>',
+					app_name_2: appLink,
+				};
+				$scope.aboutHobby = $sce.trustAsHtml($translate.instant('about.hobby', $scope.aboutTranslationData));
+				$scope.aboutForkInfo = $sce.trustAsHtml($translate.instant('about.fork-info', $scope.aboutTranslationData));
+
 				$scope.active_vault = VaultService.getActiveVault();
 				if (!SettingsService.getSetting('defaultVault') || !SettingsService.getSetting('defaultVaultPass')) {
 					if (!$scope.active_vault) {

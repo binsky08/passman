@@ -1,5 +1,10 @@
 # Passman Next
-Passman Next is a full-featured password manager, based on [Passman](https://github.com/nextcloud/passman).
+Welcome to Passman Next, a full-featured password manager, based on [Passman](https://github.com/nextcloud/passman), running in your Nextcloud.
+
+This is a hobby project to counteract the stagnating development of the official [Passman](https://github.com/nextcloud/passman) app.
+
+[Passman](https://github.com/nextcloud/passman) is stable and has been maintained and patched by me for many years.
+The **Passman Next** fork is designed to deliver updates faster and introduce new features more quickly.
 
 ## Join us!
 Visit the [“Passman General Talk” Telegram Group](https://t.me/passman_general) to participate in all sorts of topical discussions about Passman and its apps!
@@ -37,7 +42,7 @@ For more screenshots: [Click here](http://imgur.com/a/giKVt)
     - Clipperz.is
     - EnPass
     - [ocPasswords](https://github.com/fcturner/passwords)
-  
+
 Try a Passman demo [here](https://demo.passman.cc).
 
 ## External apps
@@ -58,11 +63,11 @@ Try a Passman demo [here](https://demo.passman.cc).
 ## Security
 
 ### Password generation
-Passman can generate passwords *and* measure their strength using [zxcvbn](https://github.com/dropbox/zxcvbn).   
-![](http://i.imgur.com/2qVBUfM.png)   
+Passman can generate passwords *and* measure their strength using [zxcvbn](https://github.com/dropbox/zxcvbn).
+![](http://i.imgur.com/2qVBUfM.png)
 
-Generate passwords as you like   
-![](http://i.imgur.com/jcRicOV.png)   
+Generate passwords as you like
+![](http://i.imgur.com/jcRicOV.png)
 Passwords are generated using `sjcl` randomization.
 
 ### Storing credentials
@@ -78,7 +83,7 @@ You supply a vault key which sjcl uses to encrypt your credentials. Your encrypt
 ### Sharing credentials
 Passman allows users to share passwords. *(Administrators may disable this feature.)*
 
-## API 
+## API
 Passman offers a [developer API](https://github.com/nextcloud/passman/wiki/API).
 
 ## Support Passman Next
@@ -95,22 +100,22 @@ If you have any code improvements:
 Or, if you’re feeling lazy, create an issue, and we’ll think about it.
 
 ## Docker
-To run Passman with [Docker](https://www.docker.com/), use our test Docker image. Supply your own self-signed SSL certs or use [Let’s Encrypt](https://letsencrypt.org/). Please note: The Docker image is for _testing *only*_ as database user / password are hardcoded.   
-    
+To run Passman with [Docker](https://www.docker.com/), use our test Docker image. Supply your own self-signed SSL certs or use [Let’s Encrypt](https://letsencrypt.org/). Please note: The Docker image is for _testing *only*_ as database user / password are hardcoded.
+
 If you’d like to *spice up* our Passman Docker image into a full-fledged, production-ready install, you’re welcome to do so. Please note:
   * Port 80 and 443 are used
   * SSL is enabled (or disabled if no certs are found)
   * Container startup time must be less than 15 seconds
 
-Example:   
+Example:
 ```
 docker run -p 8080:80 -p 8443:443 -v /directory/cert.pem:/data/ssl/cert.pem -v /directory/cert.key:/data/ssl/cert.key brantje/passman
 ```
-        
+
 If you want a production-ready container, use the [Nextcloud Docker](https://hub.docker.com/_/nextcloud/) and install Passman as an app.
 
 ## Development
-  * Passman uses a single `.js` file for templates which minimizes XHR template requests.   
+  * Passman uses a single `.js` file for templates which minimizes XHR template requests.
   * CSS uses SASS, so Ruby and SASS must be installed.
   * `templates.js` and the CSS are built with `grunt`.
   * Watch for changes using `grunt watch`.
@@ -127,5 +132,5 @@ Add yours when creating a [pull request](https://help.github.com/articles/creati
   * [HolgerHees](https://github.com/HolgerHees)
 
 ## FAQ
-**Are you adding something to check if malicious code is executing on the browser?**   
+**Are you adding something to check if malicious code is executing on the browser?**
 No, because malicious code can edit functions that check for malicious code.
