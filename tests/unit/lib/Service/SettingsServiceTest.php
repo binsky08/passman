@@ -23,6 +23,7 @@
 
 namespace OCA\PassmanNext\Controller;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
@@ -42,7 +43,7 @@ class SettingsServiceTest extends PHPUnit_Framework_TestCase {
 	public function setUp() {
 		$config = $this->getMockBuilder('OCP\IConfig')->getMock();
 		$userId = 'admin';
-		$this->service = new SettingsService($userId, $config, 'passman');
+		$this->service = new SettingsService($userId, $config, Application::APP_ID);
 	}
 
 	/**

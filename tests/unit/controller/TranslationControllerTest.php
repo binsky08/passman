@@ -23,6 +23,7 @@
 
 namespace OCA\PassmanNext\Controller;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCP\AppFramework\Http\JSONResponse;
 use PHPUnit_Framework_TestCase;
 
@@ -42,7 +43,7 @@ class TranslationControllerTest extends PHPUnit_Framework_TestCase {
 		$IL10N = $this->getMockBuilder('OCP\IL10N')->getMock();
 
 		$this->controller = new TranslationController(
-			'passman', $request, $IL10N
+			Application::APP_ID, $request, $IL10N
 		);
 	}
 

@@ -6,6 +6,7 @@
  */
 namespace OCA\PassmanNext\Settings;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
@@ -35,7 +36,7 @@ class AdminSection implements IIconSection {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->l->t('Passman Next');
+		return $this->l->t(Application::APP_NAME);
 	}
 
 	/**

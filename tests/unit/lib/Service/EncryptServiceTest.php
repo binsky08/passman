@@ -23,6 +23,7 @@
 
 namespace OCA\PassmanNext\Controller;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCA\PassmanNext\Service\EncryptService;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -44,7 +45,7 @@ class EncryptServiceTest extends PHPUnit_Framework_TestCase {
 	public function setUp() {
 		$config = $this->getMockBuilder('OCP\IConfig')->getMock();
 		$userId = 'admin';
-		$settings_service = new SettingsService($userId, $config, 'passman');
+		$settings_service = new SettingsService($userId, $config, Application::APP_ID);
 		$this->service = new EncryptService($settings_service);
 
 	}

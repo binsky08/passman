@@ -55,6 +55,8 @@ use Psr\Log\LoggerInterface;
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'passman-next';
 	public const CONFLICTING_APP_ID = 'passman';
+	public const APP_NAME = 'Passman Next';
+	public const APP_LABEL = 'Passwords';
 
 	/**
 	 * @throws \Exception

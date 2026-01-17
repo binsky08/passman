@@ -23,6 +23,7 @@
 
 namespace OCA\PassmanNext\Controller;
 
+use OCA\PassmanNext\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use PHPUnit_Framework_TestCase;
 
@@ -41,7 +42,7 @@ class PageControllerTest extends PHPUnit_Framework_TestCase {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
 
 		$this->controller = new PageController(
-			'passman', $request, $this->userId
+			Application::APP_ID, $request, $this->userId
 		);
 	}
 
